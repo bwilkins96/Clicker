@@ -3,7 +3,8 @@ html {
 }
 
 body {
-    background-color: aquamarine;
+    background-color: rgb(0,0,0);
+    color: white;
     font-family: "Comic Sans MS";
     display: flex;
     flex-direction: column;
