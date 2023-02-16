@@ -17,5 +17,8 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    /* border: 2px solid green; */
+}
+
+.disableSelect{
+    user-select: none;
 }
