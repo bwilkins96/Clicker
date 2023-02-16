@@ -19,6 +19,20 @@ body {
     width: 100%;
 }
 
+#reset {
+    z-index: 2;
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+}
+
+#highScore {
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
+}
+
 .disableSelect{
+    -webkit-user-select: none;
     user-select: none;
 }
