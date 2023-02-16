@@ -9,7 +9,7 @@ let rgbArray = ['g', 'b', 'r', 'gr', 'rr', 'br'];
 let rgbVal = 0;
 let rgbIdx = 0;
 let rgbMax = 255;
-let updateAmount = 5;
+let updateAmount = 15;
 
 // Game logic functions
 const handleClick = (increment=true) => {
@@ -81,6 +81,7 @@ const changeColor = () => {
     }
 
     style.backgroundColor = rgb;
+    console.log(rgbIdx);
 }
 
 const updateRgb = () => {
@@ -104,6 +105,16 @@ const updateRgbVal = () => {
         rgbVal = 0;
     } else {
         rgbVal = rgbMax;
+    }
+}
+
+const textColorCorrection = () => {
+    let style = document.body.style;
+
+    if (rgbIdx < 3) {
+
+    } else {
+
     }
 }
 
