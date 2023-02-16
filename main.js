@@ -5,9 +5,11 @@ let resetBtn = document.getElementById('reset');
 let highScore = 0;
 let highScoreDisplay = document.getElementById('highScore');
 
-let rgbArray = ['g', 'b', 'r'];
+let rgbArray = ['g', 'b', 'r', 'gr', 'rr', 'br'];
 let rgbVal = 0;
 let rgbIdx = 0;
+let rgbMax = 255;
+let updateAmount = 5;
 
 // Functions
 const handleClick = (increment=true) => {
@@ -50,7 +52,7 @@ const restore = () => {
 const resetScore = () => {
     clickCount = -1;
     rgbIdx = 0;
-    rgbVal = -5;
+    rgbVal = -updateAmount;
     handleClick(false);
 }
 
@@ -60,21 +62,42 @@ const updateHighScore = larger => {
 }
 
 const changeColor = () => {
-    if (rgbArray[rgbIdx] === 'r') {
-        document.body.style.backgroundColor = `rgb(${rgbVal}, 0, 0)`;
-    } else if (rgbArray[rgbIdx] === 'g') {
+    if (rgbArray[rgbIdx] === 'g') {
         document.body.style.backgroundColor = `rgb(0, ${rgbVal}, 0)`;
-    } else {
+    } else if (rgbArray[rgbIdx] === 'b') {
+        document.body.style.backgroundColor = `rgb(0, 255, ${rgbVal})`;
+    } else if (rgbArray[rgbIdx] === 'r') {
+        document.body.style.backgroundColor = `rgb(${rgbVal}, 255, 255)`;
+    } else if (rgbArray[rgbIdx] === 'gr') {
+        document.body.style.backgroundColor = `rgb(255, ${rgbVal}, 255)`;
+    } else if (rgbArray[rgbIdx] === 'rr') {
+        document.body.style.backgroundColor = `rgb(${rgbVal}, 0, 255)`;
+    } else if (rgbArray[rgbIdx] === 'br') {
         document.body.style.backgroundColor = `rgb(0, 0, ${rgbVal})`;
     }
 }
 
 const updateRgb = () => {
-    rgbVal += 5;
+    if (rgbIdx < 3) {
+        rgbVal += updateAmount;
+    } else {
+        rgbVal -= updateAmount;
+    }
 
-    if (rgbVal > 255) {
-        rgbVal = 0;
+    if (rgbVal > rgbMax) {
         rgbIdx = (rgbIdx + 1) % rgbArray.length;
+        updateRgbVal();
+    } else if (rgbVal < 0) {
+        rgbIdx = (rgbIdx + 1) % rgbArray.length;
+        updateRgbVal();
+    }
+}
+
+const updateRgbVal = () => {
+    if (rgbIdx < 3) {
+        rgbVal = 0;
+    } else {
+        rgbVal = rgbMax;
     }
 }
 
