@@ -11,7 +11,7 @@ let rgbIdx = 0;
 let rgbMax = 255;
 let updateAmount = 5;
 
-// Functions
+// Game logic functions
 const handleClick = (increment=true) => {
     if (increment) {
         clickCount++;
@@ -61,20 +61,26 @@ const updateHighScore = larger => {
     highScoreDisplay.innerText = `High Score: ${highScore}`
 }
 
+// Background changing functions
 const changeColor = () => {
+    let style = document.body.style;
+    let rgb = '';
+
     if (rgbArray[rgbIdx] === 'g') {
-        document.body.style.backgroundColor = `rgb(0, ${rgbVal}, 0)`;
+        rgb = `rgb(0, ${rgbVal}, 0)`;
     } else if (rgbArray[rgbIdx] === 'b') {
-        document.body.style.backgroundColor = `rgb(0, 255, ${rgbVal})`;
+        rgb = `rgb(0, ${rgbMax}, ${rgbVal})`;
     } else if (rgbArray[rgbIdx] === 'r') {
-        document.body.style.backgroundColor = `rgb(${rgbVal}, 255, 255)`;
+        rgb = `rgb(${rgbVal}, ${rgbMax}, ${rgbMax})`;
     } else if (rgbArray[rgbIdx] === 'gr') {
-        document.body.style.backgroundColor = `rgb(255, ${rgbVal}, 255)`;
+        rgb = `rgb(${rgbMax}, ${rgbVal}, ${rgbMax})`;
     } else if (rgbArray[rgbIdx] === 'rr') {
-        document.body.style.backgroundColor = `rgb(${rgbVal}, 0, 255)`;
+        rgb = `rgb(${rgbVal}, 0, ${rgbMax})`;
     } else if (rgbArray[rgbIdx] === 'br') {
-        document.body.style.backgroundColor = `rgb(0, 0, ${rgbVal})`;
+        rgb = `rgb(0, 0, ${rgbVal})`;
     }
+
+    style.backgroundColor = rgb;
 }
 
 const updateRgb = () => {

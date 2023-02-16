@@ -4,7 +4,7 @@ html {
 
 body {
     background-color: rgb(0,0,0);
-    color: rgb(175, 175, 175);
+    color: white;
     font-family: "Comic Sans MS";
     display: flex;
     flex-direction: column;
